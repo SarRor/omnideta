@@ -1,31 +1,26 @@
-<li class="nav-item">
-  <%= link_to "Sign in with Facebook", usuario_facebook_omniauth_authorize_path %>
-</li>
-
-
 <nav class="navbar navbar-expand-md bg-success navbar-dark">
   <%= link_to 'INICIO', root_path, class:"navbar-brand" %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="collapsibleNavbar">
-
     <ul class="navbar-nav">
-      <% unless usuario_signed_in? %>
-        <li class="nav-item">
-          <%= link_to 'Iniciar Sesión', new_usuario_session_path, class:"nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'Registrarse', new_usuario_registration_path, class:"nav-link" %>
-        </li>
-      <% else %>
+      <% if usuario_signed_in? %>
         <li class="nav-item">
           <%= link_to 'Cerrar Sesión', destroy_usuario_session_path, method: :delete, class:"nav-link" %>
         </li>
         <li class="nav-item">
           <%= link_to "Editar usuario", edit_usuario_registration_path, class:"nav-link" %>
         </li>
+      <% else %>
+        <li class="nav-item">
+          <%= link_to 'Iniciar Sesión', new_usuario_session_path, class:"nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Registrarse', new_usuario_registration_path, class:"nav-link" %>
+        </li>
       <% end %>
     </ul>
+
   </div>
 </nav>
